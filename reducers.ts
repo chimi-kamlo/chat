@@ -1,4 +1,4 @@
-import { Action, ActionType, State } from './types';
+import {ActionType} from "./types";
 
 // État initial de l'application
 const initialState: State = {
@@ -8,7 +8,8 @@ const initialState: State = {
 // Réducteur pour mettre à jour l'état de l'application
 const reducer = (state: State = initialState, action: Action): State => {
   switch (action.type) {
-    case ActionType.ADD_MESSAGE:
+    case Action
+    Type.ADD_MESSAGE:
       // Ajoute le nouveau message à la liste existante
       return {
         ...state,

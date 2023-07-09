@@ -1,36 +1,29 @@
-import React, { useState,useReducer } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import React, { useState, useReducer } from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  Button,
+  StyleSheet
+} from 'react-native';
 import { sendMessage, receiveMessage } from './actions';
 import reducer from './reducers';
 import WiFi from 'react-native-wifi-reborn';
 
 const App: React.FC = () => {
+
   const [message, setMessage] = useState<string>('');
   const [receivedMessage, setReceivedMessage] = useState<string>('');
 
-  /*const handleSendMessage = () => {
-    sendMessage('nom du réseau WiFi', message)
-      .then(() => console.log('Message envoyé avec succès !'))
-      .catch(error => console.log(error));
-  };*/
   const handleSendMessage = () => {
     sendMessage('nom du réseau WiFi', message)
-      .then(() => {
-        console.log('Message envoyé avec succès !');
-        dispatch({ type: 'ADD_MESSAGE', payload: message }); // <- Dispatch l'action
-      })
-      .catch((error) => console.log(error));
+    .then(() => {
+      console.log('Message envoyé avec succès !');
+      dispatch({ type: 'ADD_MESSAGE', payload: message }); // <- Dispatch l'action
+    })
+    .catch((error) => console.log(error));
   };
 
- /* const handleReceiveMessage = async () => {
-    try {
-      const data = await receiveMessage('nom du réseau WiFi');
-      setReceivedMessage(data);
-      console.log('Message reçu : ', data);
-    } catch (error) {
-      console.log(error);
-    }
-  };*/
   const handleReceiveMessage = async () => {
     try {
       const data = await receiveMessage('nom du réseau WiFi');
@@ -41,18 +34,17 @@ const App: React.FC = () => {
       console.log(error);
     }
   };
-const initialState = {
-  messages: [],
-};
 
-const [state, dispatch] = useReducer(reducer, initialState);
-//wifi connection//
-const [connected, setConnected] = useState(false);
-  //const [message, setMessage] = useState('');
+  const initialState = {
+    messages: [],
+  };
+
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const ssid = 'nom du réseau WiFi';
   const password = 'mot de passe';
- const connectToNetwork = async () => {
+
+  const connectToNetwork = async () => {
     try {
       await WiFi.loadWifiList();
       const wifiList = await WiFi.getScanResults();
@@ -66,25 +58,24 @@ const [connected, setConnected] = useState(false);
     }
   };
 
-   const sendMessage = async () => {
-      try {
-        await WiFi.sendDataToSSID(ssid, message);
-        console.log('Message envoyé avec succès !');
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  const sendMessage = async () => {
+    try {
+      await WiFi.sendDataToSSID(ssid, message);
+      console.log('Message envoyé avec succès !');
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-    const receiveMessage = async () => {
-      try {
-        const data = await WiFi.receivedData();
-        console.log('Message reçu : ', data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  const receiveMessage = async () => {
+    try {
+      const data = await WiFi.receivedData();
+      console.log('Message reçu : ', data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
-//wifi//
   return (
     <View>
       <Text>Chat App</Text>
@@ -98,24 +89,18 @@ const [connected, setConnected] = useState(false);
         <Button title="Recevoir" onPress={handleReceiveMessage} />
         {receivedMessage && <Text>Message reçu: {receivedMessage}</Text>}
       </View>
-      //
+
       <View style={styles.container}>
-            <Text style={styles.text}>
-              {!connected ? 'Non connecté' : `Connecté au réseau ${ssid}`}
-            </Text>
-            <Button title="Se connecter au réseau WiFi" onPress={connectToNetwork} />
-            {connected && (
-              <>
-                <TextInput value={message} onChangeText={setMessage} />
-                <Button title="Envoyer" onPress={sendMessage} />
-                <Button title="Recevoir" onPress={receiveMessage} />
-              </>
-            )}
-          </View>
-          //
+        <Text style={styles.text}>
+
+        </Text>
+        <Button title="Se connecter au réseau WiFi" onPress={connectToNetwork} />
+
+      </View>
     </View>
   );
 };
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -129,4 +114,5 @@ const styles = StyleSheet.create({
     margin: 10,
   },
 });
+
 export default App;

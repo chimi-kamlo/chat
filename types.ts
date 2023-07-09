@@ -3,3 +3,6 @@ export interface Message {
   sender: string;
   text: string;
 }
+export enum ActionType{
+ ADD_MESSAGE
+}

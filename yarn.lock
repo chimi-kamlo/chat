@@ -5866,6 +5866,11 @@ react-native-maps@^1.6.0:
   dependencies:
     "@types/geojson" "^7946.0.10"
 
+react-native-wifi-p2p@^3.4.1:
+  version "3.4.1"
+  resolved "https://registry.npmjs.org/react-native-wifi-p2p/-/react-native-wifi-p2p-3.4.1.tgz"
+  integrity sha512-zX5JL4rnDpnl2EiF7+U4IGb5qHpmScoe/CBysITHBUxfPdlYJVNN7MY6pm5Z7CVvygJfS3KvYFBRcmccErFs/A==
+
 react-native-wifi-reborn@^4.7.0:
   version "4.7.0"
   resolved "https://registry.npmjs.org/react-native-wifi-reborn/-/react-native-wifi-reborn-4.7.0.tgz"
