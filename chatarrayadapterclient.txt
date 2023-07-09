@@ -1,0 +1,10 @@
+Ce code correspond à une classe Java qui étend la classe ArrayAdapter et qui sert à afficher les messages échangés dans le chat. Voici une explication ligne par ligne :
+
+- La première ligne indique le nom du package et le nom de la classe.
+- Les lignes 5 à 13 importent les classes nécessaires pour l'application.
+- Les lignes 15 à 23 déclarent les variables nécessaires pour la gestion des messages du chat.
+- La variable handler permet de communiquer entre les threads.
+- La méthode add() (lignes 25 à 32) permet d'ajouter un message à la liste de messages du chat. Elle utilise un objet Handler pour mettre à jour l'interface graphique.
+- Les méthodes getCount() (lignes 34 à 36) et getItem() (lignes 38 à 40) permettent de récupérer le nombre de messages et un message spécifique de la liste de messages.
+- La méthode getView() (lignes 42 à 62) est appelée pour chaque élément de la liste de messages. Elle récupère le message, crée une vue pour l'afficher (à gauche ou à droite selon l'auteur du message) et affiche le texte du message dans la vue. Elle utilise la méthode Html.fromHtml() pour gérer les balises HTML dans les messages.
+- La classe ChatArrayAdapter est utilisée dans la classe ClientActivity pour afficher les messages dans la liste de messages du chat.
